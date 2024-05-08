@@ -1,0 +1,86 @@
+<?php
+use Drupal\views\ViewExecutable;
+use \Drupal\search_api_autocomplete\Suggestion\SuggestionInterface;
+use \Drupal\search_api\Query\ConditionGroupInterface;
+
+/**
+* Implements hook_views_pre_render().
+*/
+function agrovoc_search_basic_views_pre_render(ViewExecutable $view) {
+
+  if (isset($view) && ($view->storage->id() == 'agrovoc_search_searchapi')) {
+    $view->element['#attached']['library'][] = 'agrovoc_search/agrovoc-search-basic';
+  }
+}
+
+/*
+function agrovoc_search_search_api_db_query_alter(\Drupal\Core\Database\Query\SelectInterface &$db_query, \Drupal\search_api\Query\QueryInterface $query) {
+	// Attempt to alter the query for the auocomplete, but the search keys are not present and it seems it's not executed when creating the suggestions
+	// Tried with an event subscribeer to \Drupal\search_api_db\Event\SearchApiDbEventsQUERY_PRE_EXECUTE, but same problem
+	// Possible solution: patch to delete line 3034: 
+	// ->condition('t.word', $keys, 'NOT IN')
+	// from /web/modules/contrib/search_api/modules/search_api_db/src/Plugin/search_api/backend/Database.php
+}
+*/
+
+function agrovoc_search_basic_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
+
+	// Implements hook_search_api_autocomplete_suggestions_alter:
+	//
+	// If the exact word searched is in the suggestions, SearchApi doesn't put it as first element of the suggestions array:
+	// this function takes the exact match )if it is in the suggestions, which means it exists as a word) and puts it as first suggestion.
+	
+	/* 
+	$alter_params = [
+		'query' => $query,
+		'search' => $search,
+		'incomplete_key' => $incomplete,
+		'user_input' => $keys,
+	];
+	*/
+
+	/* TEST:
+	$newSugg = new \Drupal\search_api_autocomplete\Suggestion\Suggestion('salmo');
+	$newSugg->setUserInput('salmo');
+	//$newSugg->setLabel('salmo');
+	$newSugg->setResultsCount(1);
+	$suggestions[] = $newSugg;
+	*/
+	
+	/*
+	// DEBUG:
+	\Drupal::logger('agrovoc_search')->notice('Suggestions before: @sug',
+	  array(
+		'@sug' => print_r($suggestions, 1)
+		));	
+	*/
+	
+	$exact_sugg = null; 
+	$ix = 0;
+	$ss = &$suggestions;
+	foreach($ss as $sugg) {
+	  if ($sugg->getSuggestionPrefix() . $sugg->getUserInput() . $sugg->getSuggestionSuffix() == $alter_params['incomplete_key']) {
+		  \Drupal::logger('agrovoc_search_basic')->notice('Hook autocomplete: exact match at @i',
+		  array(
+			'@i' => strval($ix)
+			));	
+		  $exact_sugg = clone $sugg;
+		  break;
+	  }
+	  $ix= $ix+1;
+	}
+	if (!is_null($exact_sugg)) {
+		unset($ss[$ix]);
+		array_values($ss);
+		//$exact_sugg->setResultsCount(100);
+		array_unshift($ss, $exact_sugg);
+	}
+
+	/*
+	// DEBUG:
+	\Drupal::logger('agrovoc_search')->notice('Suggestions after: @sug',
+	  array(
+		'@sug' => print_r($ss, 1)
+		));	
+	*/
+} 

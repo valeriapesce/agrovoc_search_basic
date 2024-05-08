@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Full HTML plaintext'
+format: full_html_plaintext
+weight: 0
+filters: {  }

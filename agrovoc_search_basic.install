@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the AIMS AGROVOC Search module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function agrovoc_search_basic_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function agrovoc_search_basic_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+
+  /** Delete the SearchAPI tables in case they haven't been deleted **/
+  /** SearchAPI does it on Uninstall, but if you uninstall only this module, the SearchAPI config is deleted but the tables remain, and when reinstalling this module, the index tables are duplicated **/
+  
+  $connection = \Drupal::database();
+  $tables = $connection->schema()->findTables('search_api_db_agrovoc%');
+  foreach ($tables as $k => $table) {
+      $connection->schema()->dropTable($table);
+  }
+
+  /*
+  ***  
+  Delete configs: ONLY those imported from the module install/ folder. 
+  Cannot delete configurations that come from oher modules and have only been overridden by this module: they may be used by other modules or functionality
+  ***
+  */
+  //Drupal::configFactory()->reset('field.storage.bloom_stem.bs_twitter_ac');
+  //Drupal::configFactory()->getEditable('field.storage.node.your_field_name')->delete()
+
+  /** USE ONLY if necessary to delete configs in optional for tests **/
+  /*
+  $module_path = \Drupal::service('extension.list.module')->getPath('agrovoc_search_basic') . '/config/optional';
+
+  $configs = [];
+  $files = \Drupal::service('file_system')->scanDirectory($module_path, '/\.yml$/');
+
+  if ($files) {
+    foreach ($files as $file) {
+        $configs[] = $file->name;
+    }
+
+    foreach ($configs as $config_name) {
+        \Drupal::configFactory()->getEditable($config_name)->delete();
+    }
+
+  }
+  */
+  
+  $module_path = \Drupal::service('extension.list.module')->getPath('agrovoc_search_basic') . '/config/install';
+
+  $configs = [];
+  $files = \Drupal::service('file_system')->scanDirectory($module_path, '/\.yml$/');
+
+  if ($files) {
+    foreach ($files as $file) {
+        $configs[] = $file->name;
+    }
+
+    foreach ($configs as $config_name) {
+        \Drupal::configFactory()->getEditable($config_name)->delete();
+    }
+    return TRUE;
+  }
+
+  drupal_flush_all_caches();
+}
+
+
+

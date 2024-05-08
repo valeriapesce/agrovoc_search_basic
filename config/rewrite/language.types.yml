@@ -1,0 +1,23 @@
+config_rewrite:
+  replace: ["all", "configurable", "negotiation/language_content"]
+all:
+  - language_interface
+  - language_content
+  - language_url
+configurable:
+  - language_interface
+  - language_content
+negotiation:
+  language_content:
+    enabled:
+      language-session: -20
+      language-interface: -18
+      language-selected: -17
+    method_weights:
+      language-session: -20
+      language-content-entity: -19
+      language-interface: -18
+      language-selected: -17
+      language-url: -16
+      language-user: -15
+      language-browser: -14

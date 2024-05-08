@@ -1,0 +1,28 @@
+type: module
+name: AIMS AGROVOC Search Basic
+description: 'Module to create a simple AGROVOC search view.'
+package: AIMS
+core: 10.x
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:text
+  - drupal:link
+  - drupal:options
+  - drupal:field_ui
+  - drupal:views
+  - drupal:views_ui
+  - drupal:taxonomy
+  - drupal:locale
+  - drupal:content_translation
+  - agrovoc_taxonomy_create_import_csv:agrovoc_taxonomy_create_import_csv
+  - search_api:search_api
+  - search_api_db:search_api_db
+  - search_api_autocomplete:search_api_autocomplete
+  - entityreference_extensions:entityreference_extensions
+  - dropdown_language:dropdown_language
+  - token:token
+  - manage_display:manage_display
+  - linked_field:linked_field
+  - config_rewrite:config_rewrite
+  - taxonomy_term_depth:taxonomy_term_depth
+

@@ -1,0 +1,58 @@
+.ui-autocomplete {overflow: auto!important; height: 400px!important;}
+.form-item-agrovoc-language {max-width: 10px; max-height:10px;clear:none; float:right;visibility:hidden!important;}
+.agrovoc-search-accordion-page .small-text,
+.agrovoc-small-text {font-size:0.9em;}
+.agrovoc-search-accordion-page .bold,
+.agrovoc-bold {font-weight: bold;}
+.agrovoc-search-accordion-page .padding-top,
+.agrovoc-padding-top {padding-top:15px;}
+.agrovoc-search-accordion-page .padding-bottom,
+.agrovoc-padding-bottom {padding-bottom:15px;}
+.agrovoc-search-accordion-page .padding-right,
+.agrovoc-padding-right {padding-right:4px;}
+.agrovoc-search-accordion-page .inline,
+.agrovoc-inline {display: inline-block;}
+.agrovoc-search-accordion-page .right-border,
+.agrovoc-right-border {border-right: 1px solid #676767;}
+.agrovoc-search-accordion-page .align-right,
+.agrovoc-align-right {text-align: right;}
+.agrovoc-search-accordion-page .clear-right,
+.agrovoc-clear-right {clear: right;}
+.agrovoc-search-accordion-page .clear-left,
+.agrovoc-clear-left {clear: left;}
+.agrovoc-search-accordion-page .clear,
+.agrovoc-clear {clear: both;}
+.agrovoc-search-accordion-page .float-left,
+.agrovoc-float-left {float:left;}
+.agrovoc-search-accordion-page .float-right,
+.agrovoc-float-right {float:right;}
+.agrovoc-search-accordion-page .float-none,
+.agrovoc-float-none {float:none;}
+.agrovoc-search-accordion-page .no-underline,
+.agrovoc-no-underline {text-decoration: none;}
+.agrovoc-search-accordion-page .preferred,
+.agrovoc-preferred {font-size:1.3em; font-weight: bold;}
+.agrovoc-search-accordion-page .no-line-space,
+.agrovoc-no-line-space {margin-bottom:0px; margin-top:0px; padding-bottom:0px; padding-top:4px;}
+.agrovoc-search-accordion-page .term-link-multiple {height:20px;}
+.agrovoc-search-accordion-page .term-link-multiple:last-child {border:none;}
+.agrovoc-search-accordion-page .label-multiple:last-child {border:none;}
+.agrovoc-search-accordion-page .skosmos-link {color: #4F87B1!important; text-decoration:none;}
+.agrovoc-search-accordion-page ul.dropbutton a {text-decoration: none;}
+.agrovoc-search-accordion-page .ui-accordion-header-active {
+    border: 1px solid maroon;
+    background: #4F87B1;
+}
+.views-field-search-api-rendered-item .group-left {padding-right:12px; float:left; width:45%!important;}
+.views-field-search-api-rendered-item .group-right {width:45%!important;}
+.agrovoc-search-accordion-page .text-collapse {
+  font-size:0.9em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.agrovoc-search-accordion-page .text-collapse:hover {
+  -webkit-line-clamp: unset;
+}
+.view-agrovoc table tr th, table tr th a, table tr th a:hover, table tr th a:focus {color: #4F87B1;}

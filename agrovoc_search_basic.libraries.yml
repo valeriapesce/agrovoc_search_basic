@@ -1,0 +1,5 @@
+agrovoc-search-basic:
+  version: 1.x
+  css:
+    theme:
+      css/agrovoc-search-styles.css: {}

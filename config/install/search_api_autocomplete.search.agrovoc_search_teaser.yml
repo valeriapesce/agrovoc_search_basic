@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.agrovoc
+    - views.view.agrovoc_search_teaser
+  module:
+    - views
+    - search_api_autocomplete
+id: agrovoc_search_teaser
+label: 'AGROVOC search teaser'
+index_id: agrovoc
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights:
+  server: 0
+suggester_limits:
+  server: 100
+search_settings:
+  'views:agrovoc_search_teaser':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 100
+  min_length: 1
+  show_count: false
+  delay: null
+  submit_button_selector: ':submit'
+  autosubmit: true

@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.agrovoc_linked_term_link
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_alternative_labels
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_broader
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_definition
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_narrower
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_note
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_related
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_transliterated_def
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_transliterated_lab
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_transliterated_tit
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_uri
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_agrovoc_uri_link
+    - field.field.taxonomy_term.fao_aims_agrovoc.field_fao_agrovoc_code
+    - taxonomy.vocabulary.fao_aims_agrovoc
+id: taxonomy_term.fao_aims_agrovoc.agrovoc_linked_term_link
+targetEntityType: taxonomy_term
+bundle: fao_aims_agrovoc
+mode: agrovoc_linked_term_link
+content:
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_agrovoc_alternative_labels: true
+  field_agrovoc_broader: true
+  field_agrovoc_definition: true
+  field_agrovoc_narrower: true
+  field_agrovoc_note: true
+  field_agrovoc_related: true
+  field_agrovoc_transliterated_def: true
+  field_agrovoc_transliterated_lab: true
+  field_agrovoc_transliterated_tit: true
+  field_agrovoc_uri: true
+  field_agrovoc_uri_link: true
+  field_fao_agrovoc_code: true
+  langcode: true
+  search_api_excerpt: true
