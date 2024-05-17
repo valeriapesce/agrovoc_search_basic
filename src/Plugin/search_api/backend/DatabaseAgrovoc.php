@@ -43,7 +43,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 // Use also the oiginal class?
-//use Drupal\search_api_db\Plugin\search_api\backend\Database;
+use Drupal\search_api_db\Plugin\search_api\backend\Database;
 
 
 /**
