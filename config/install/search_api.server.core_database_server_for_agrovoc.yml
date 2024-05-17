@@ -2,13 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-    - search_api_db
-_core:
-  default_config_hash: pur3Ld1qGGFZqnIyaoFvASCvhA5NqLRMquxUhkpH9nU
+    - agrovoc_search_basic
 id: core_database_server_for_agrovoc
 name: 'Database server for AGROVOC'
 description: 'Uses the Drupal database for AGROVOC searches'
-backend: search_api_db
+backend: search_api_db_agrovoc
 backend_config:
   database: 'default:default'
   min_chars: 1
