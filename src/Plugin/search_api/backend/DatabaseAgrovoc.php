@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\agrovoc_search\Plugin\search_api\backend;
+namespace Drupal\agrovoc_search_basic\Plugin\search_api\backend;
 
 // Same "use" directivs a in overridden class?
 use Drupal\Component\Plugin\Exception\PluginException;
